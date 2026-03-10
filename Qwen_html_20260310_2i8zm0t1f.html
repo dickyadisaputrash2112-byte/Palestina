@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solidarity Jersey | Kaos Olahraga untuk Kehidupan Sehari-hari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --green: #007A3D;
+      --red: #CE1126;
+      --gray-light: #f5f5f5;
+      --gray: #888888;
+      --gray-dark: #333333;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+      --container-width: 1200px;
+      --keffiyeh-pattern: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007A3D' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: var(--black);
+      background-color: var(--white);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Utility Classes */
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      background-color: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--black);
+      color: var(--black);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--gray-dark);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-weight: 400;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.25rem 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      padding: 0.75rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--green), var(--red));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--green);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--green);
+      transition: var(--transition);
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .cart-icon:hover {
+      color: var(--green);
+      transform: scale(1.1);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: var(--red);
+      color: white;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--black);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: var(--keffiyeh-pattern);
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .btn-white:hover {
+      background-color: var(--green);
+      color: var(--white);
+    }
+
+    .btn-transparent {
+      background-color: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn-transparent:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    /* Mission Section */
+    .mission {
+      background-color: var(--gray-light);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: var(--keffiyeh-pattern);
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .mission-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .mission p {
+      font-size: 1.75rem;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--gray-dark);
+      margin-bottom: 2rem;
+    }
+
+    .mission-highlight {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* Products Section */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .product-image {
+      height: 320px;
+      background: linear-gradient(135deg, var(--gray-light), #e0e0e0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: var(--keffiyeh-pattern);
+      opacity: 0.08;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--red);
+      color: white;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .add-to-cart {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--black);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .add-to-cart:hover {
+      background-color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    /* Lifestyle Section */
+    .lifestyle {
+      background-color: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lifestyle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: var(--keffiyeh-pattern);
+      opacity: 0.07;
+      z-index: 0;
+    }
+
+    .lifestyle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lifestyle-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      height: 300px;
+      position: relative;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .lifestyle-item:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .lifestyle-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .lifestyle-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .lifestyle-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    /* Impact Section */
+    .impact {
+      text-align: center;
+      background: linear-gradient(135deg, var(--green), #005a2d);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .impact::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: var(--keffiyeh-pattern);
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .impact-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .impact h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .impact p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    .impact-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--green);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 300;
+      display: block;
+      padding: 0.25rem 0;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      transform: translateX(4px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+
+    .social-link:hover {
+      background-color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #aaa;
+      font-weight: 300;
+    }
+
+    .community-message {
+      background-color: rgba(0, 122, 61, 0.15);
+      border-left: 3px solid var(--green);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      :root {
+        --container-width: 960px;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.3rem;
+      }
+      
+      .section-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 80%;
+        max-width: 300px;
+        height: calc(100vh - 70px);
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        z-index: 999;
+        gap: 1.5rem;
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .nav-actions {
+        gap: 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .section {
+        padding: 3.5rem 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .mission p {
+        font-size: 1.4rem;
+      }
+      
+      .impact-stats {
+        gap: 1.5rem;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --container-width: 100%;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .hero {
+        min-height: 600px;
+        height: auto;
+        padding: 5rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .product-image {
+        height: 280px;
+      }
+      
+      .lifestyle-item {
+        height: 250px;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">SJ</div>
+        Solidarity<span>Jersey</span>
+      </a>
+      
+      <button class="mobile-toggle" id="mobileToggle">☰</button>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#" class="active">Beranda</a></li>
+        <li><a href="#products">Kaos</a></li>
+        <li><a href="#mission">Misi Kami</a></li>
+        <li><a href="#lifestyle">Komunitas</a></li>
+        <li><a href="#footer">Kontak</a></li>
+      </ul>
+      
+      <div class="nav-actions">
+        <div class="cart-icon">
+          🛒
+          <span class="cart-count">0</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Kenakan Solidaritas</h1>
+      <p>Kaos olahraga untuk kehidupan sehari-hari</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-white">Belanja Sekarang</a>
+        <a href="#mission" class="btn btn-transparent">Pelajari Misi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission section" id="mission">
+    <div class="container mission-content">
+      <h2 class="section-title animate-on-scroll">Lebih Dari Sekadar Kaos</h2>
+      <p class="animate-on-scroll">
+        <span class="mission-highlight">Sebuah simbol solidaritas, gerakan, dan kemanusiaan yang terbagi.</span> 
+        Setiap kaos Solidarity Jersey dirancang untuk menemani aktivitas sehari-hari Anda—dari olahraga, gym, gaya kasual, hingga kegiatan komunitas—sambil menyebarkan pesan persaudaraan dan dukungan untuk kemanusiaan.
+      </p>
+      <a href="#products" class="btn animate-on-scroll">Jelajahi Koleksi</a>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">Kaos Unggulan</h2>
+      <p class="section-subtitle animate-on-scroll">Dirancang dengan kualitas premium untuk kenyamanan sepanjang hari</p>
+      
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <span class="product-badge">Terlaris</span>
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Kaos Klasik</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Kaos Solidaritas Klasik</h3>
+            <span class="product-price">Rp 349.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Motif Keffiyeh</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Kaos Motif Keffiyeh</h3>
+            <span class="product-price">Rp 399.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <span class="product-badge">Edisi Terbatas</span>
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Edisi Kebebasan</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Freedom Edition</h3>
+            <span class="product-price">Rp 429.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Urban Sport</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Urban Sport Jersey</h3>
+            <span class="product-price">Rp 379.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Minimalis</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Minimal Solidarity Jersey</h3>
+            <span class="product-price">Rp 329.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product-card animate-on-scroll">
+          <div class="product-image">
+            <span class="product-badge">Baru</span>
+            <!-- Placeholder for product image -->
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;font-weight:500;color:#666">Edisi Komunitas</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Community Edition</h3>
+            <span class="product-price">Rp 389.000</span>
+            <button class="add-to-cart">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifestyle Section -->
+  <section class="lifestyle section" id="lifestyle">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll" style="color: white;">Gaya Hidup Solidarity</h2>
+      <p class="section-subtitle animate-on-scroll" style="color: rgba(255,255,255,0.9); max-width: 650px;">
+        Kaos kami dirancang untuk menemani setiap momen dalam keseharian Anda
+      </p>
+      
+      <div class="lifestyle-grid">
+        <div class="lifestyle-item animate-on-scroll">
+          <div style="width:100%;height:100%;background:linear-gradient(45deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;color:#aaa;font-weight:500">Gambar: Lari Pagi</div>
+          <div class="lifestyle-caption">Aktivitas Olahraga</div>
+        </div>
+        <div class="lifestyle-item animate-on-scroll">
+          <div style="width:100%;height:100%;background:linear-gradient(45deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;color:#aaa;font-weight:500">Gambar: Gym</div>
+          <div class="lifestyle-caption">Latihan di Gym</div>
+        </div>
+        <div class="lifestyle-item animate-on-scroll">
+          <div style="width:100%;height:100%;background:linear-gradient(45deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;color:#aaa;font-weight:500">Gambar: Streetwear</div>
+          <div class="lifestyle-caption">Gaya Kasual Harian</div>
+        </div>
+        <div class="lifestyle-item animate-on-scroll">
+          <div style="width:100%;height:100%;background:linear-gradient(45deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;color:#aaa;font-weight:500">Gambar: Komunitas</div>
+          <div class="lifestyle-caption">Kegiatan Komunitas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="impact section">
+    <div class="container impact-content">
+      <h2 class="animate-on-scroll">Setiap Kaos Mendukung Solidaritas</h2>
+      <p class="animate-on-scroll">
+        Sebagian dari keuntungan penjualan kami disalurkan untuk mendukung program kemanusiaan dan pembangunan komunitas di Palestina dan wilayah yang membutuhkan.
+      </p>
+      
+      <div class="impact-stats">
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number">15%</span>
+          <span class="stat-label">dari keuntungan disumbangkan</span>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number">10.000+</span>
+          <span class="stat-label">kaos terjual untuk kebaikan</span>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">program komunitas didukung</span>
+        </div>
+      </div>
+      
+      <a href="#footer" class="btn btn-white animate-on-scroll" style="margin-top: 2rem;">Pelajari Dampak Kami</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Tentang Kami</h3>
+          <ul class="footer-links">
+            <li><a href="#">Cerita Brand</a></li>
+            <li><a href="#">Nilai & Misi</a></li>
+            <li><a href="#">Keberlanjutan</a></li>
+            <li><a href="#">Karir</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Bantuan</h3>
+          <ul class="footer-links">
+            <li><a href="#">Pengiriman & Pengembalian</a></li>
+            <li><a href="#">Panduan Ukuran</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Hubungi Kami</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Komunitas</h3>
+          <ul class="footer-links">
+            <li><a href="#">Program Relawan</a></li>
+            <li><a href="#">Kemitraan</a></li>
+            <li><a href="#">Cerita Komunitas</a></li>
+            <li><a href="#">Donasi Langsung</a></li>
+          </ul>
+          <div class="community-message">
+            Setiap pembelian Anda membantu membangun masa depan yang lebih baik. Terima kasih telah menjadi bagian dari gerakan solidaritas.
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Ikuti Kami</h3>
+          <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+            <a href="#" class="social-link">t</a>
+          </div>
+          <p style="margin-top: 1.5rem; color: #aaa; font-weight: 300; line-height: 1.6;">
+            Bergabunglah dengan komunitas kami untuk update terbaru, cerita inspiratif, dan kesempatan untuk membuat perbedaan.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Solidarity Jersey. Semua hak dilindungi. | Dirancang dengan ❤️ untuk kemanusiaan</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">Solidarity Jersey adalah brand gaya hidup yang terinspirasi oleh semangat Palestina. Sebagian keuntungan disumbangkan untuk program kemanusiaan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileToggle.textContent = '☰';
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Add to cart animation and counter
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartCount = document.querySelector('.cart-count');
+    let count = 0;
+    
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Animation effect
+        const originalText = this.innerHTML;
+        this.innerHTML = '✓ Ditambahkan!';
+        this.style.backgroundColor = '#007A3D';
+        
+        // Update cart count
+        count++;
+        cartCount.textContent = count;
+        cartCount.style.animation = 'pulse 0.4s ease';
+        
+        // Reset button after 1.5 seconds
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.style.backgroundColor = '';
+          cartCount.style.animation = '';
+        }, 1500);
+        
+        // Show notification (simple version)
+        showNotification('Produk berhasil ditambahkan ke keranjang!');
+      });
+    });
+    
+    // Simple notification function
+    function showNotification(message) {
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.textContent = message;
+      notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #007A3D;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 9999;
+        font-weight: 500;
+        animation: fadeInOut 2.5s ease forwards;
+      `;
+      
+      // Add animation keyframes
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeInOut {
+          0% { opacity: 0; transform: translateY(20px); }
+          15% { opacity: 1; transform: translateY(0); }
+          85% { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(-10px); }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      document.body.appendChild(notification);
+      
+      // Remove after animation
+      setTimeout(() => {
+        notification.remove();
+        style.remove();
+      }, 2500);
+    }
+    
+    // Scroll animation for elements
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animateElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Initialize animations on load for elements already in view
+    window.addEventListener('load', () => {
+      animateElements.forEach(element => {
+        if (isElementInViewport(element)) {
+          element.classList.add('visible');
+        }
+      });
+    });
+    
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Cart icon interaction
+    const cartIcon = document.querySelector('.cart-icon');
+    cartIcon.addEventListener('click', () => {
+      if(count === 0) {
+        showNotification('Keranjang belanja Anda masih kosong');
+      } else {
+        showNotification(`Anda memiliki ${count} item di keranjang`);
+      }
+    });
+  </script>
+</body>
+</html>
